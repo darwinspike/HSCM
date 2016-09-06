@@ -1,0 +1,42 @@
+﻿@model Storage.Models.Administration.CellarAreaViewModels
+
+
+<h1>@ViewBag.Title</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.CellarArea.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CellarArea.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CellarArea.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CellarArea.detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CellarArea.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CellarArea.detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.CellarArea.id)
+                @Html.HiddenFor(model => model.CellarArea.upDateDate)
+                @Html.HiddenFor(model => model.CellarArea.createDate)
+                @Html.HiddenFor(model => model.CellarArea.state)
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

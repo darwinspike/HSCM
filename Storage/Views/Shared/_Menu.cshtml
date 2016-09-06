@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Medical Suplices <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach (var item in Bussines.DepartmentBussines.Select.GetDepartmentList().DepartmentList)
+                        {
+                            <li class="subnavoptiondown">@Html.ActionLink(item.name, "AssignmentView", new { controller = "Assignment", AnchorAssignment = item.id, AssignmentType = 1, step = "1" }) </li>
+                        }
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Clean", "", "Clean") </li>
+                <li>@Html.ActionLink("Kitchen", "", "Kitchen") </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">General Services <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @*@foreach (var item in Bussines.CategoryBussines.GetCategory())
+                    {
+                        <li class="subnavoptiondown">@Html.ActionLink(item.name, "AssignmentView", new { controller = "Assignment", AnchorAssignment = item.id, AssignmentType = 2, step = "1" }) </li>
+                    }*@
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Users</li>
+                        <li role="separator" class="divider"></li>
+                        <li>@Html.ActionLink("Users", "UserView", "") </li>
+                        <li>@Html.ActionLink("User Type", "UserTypeView", "UserType") </li>
+                        <li>@Html.ActionLink("Permission User", "UserPermissionView", "") </li>
+                        <li>@Html.ActionLink("Employees", "EmployeeView", "") </li>
+
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Other</li>
+                        <li role="separator" class="divider"></li>
+                        <li>@Html.ActionLink("Cellar Area", "cellarAreaView", "CellarArea")</li>
+                        <li>@Html.ActionLink("Department", "departmentView", "Department") </li>
+                        <li>@Html.ActionLink("Category", "CategoryView", "Category") </li>
+                        <li>@Html.ActionLink("Provider", "ProviderView", "Provider") </li>
+                        <li>@Html.ActionLink("Permission", "PermissionTypeView", "TypePermission") </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li role="separator" class="divider"></li>
+                        <li>@Html.ActionLink("Products", "productView", "product") </li>
+                        <li>@Html.ActionLink("Products Type", "productTypeView", "ProductType") </li>
+                        <li>@Html.ActionLink("Order Product", "", "") </li>
+                        <li>@Html.ActionLink("Product Registration", "CellarMonitoringView", "cellar") </li>
+                    </ul>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

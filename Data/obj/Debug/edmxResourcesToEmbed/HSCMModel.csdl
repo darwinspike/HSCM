@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HSCMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAssignment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="loan" Type="Int32" />
+    <Property Name="idProduct" Type="Int32" />
+    <Property Name="idEmployee" Type="Int32" />
+    <Property Name="idAssignmentType" Type="Int32" />
+    <Property Name="idAnchorAssingment" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblAssignmentType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblCategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idCategory" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblCellar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="idProduct" Type="Int32" />
+    <Property Name="idcellarArea" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblCellarArea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblContactInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNumber" Type="Int32" />
+    <Property Name="cellPhone" Type="Int32" />
+    <Property Name="faxPhone" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblDepartment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblDownloadAssignment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="idProduct" Type="Int32" />
+    <Property Name="idEmployee" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblEmployee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idUserType" Type="Int32" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblFileManager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fileSize" Type="Int32" />
+    <Property Name="fileFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="fileDetail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblLoanAssignment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProducto" Type="Int32" />
+    <Property Name="stateProduct" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="dateLoan" Type="DateTime" Precision="3" />
+    <Property Name="detailLoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dateReturn" Type="DateTime" Precision="3" />
+    <Property Name="detailReturn" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idAssignment" Type="Int32" />
+    <Property Name="idEmployee" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblLoanAssignmentFileManager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idLoanAssignment" Type="Int32" />
+    <Property Name="idFileManager" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idProductType" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblProductFileManager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProduct" Type="Int32" />
+    <Property Name="idFileManager" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblProductProvider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProduct" Type="Int32" />
+    <Property Name="idProvider" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblProductType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblProverContactInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProvider" Type="Int32" />
+    <Property Name="idContactInformation" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblProvider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="companyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTransaction">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="idProvide" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTransactionConfigurate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTransaction" Type="Int32" />
+    <Property Name="idTransactionType" Type="Int32" />
+    <Property Name="idAnchorTransaction" Type="Int32" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTransactionType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTypePermission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="numberLevel" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblUserConfiguration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="idTypePermission" Type="Int32" />
+    <Property Name="idCellarArea" Type="Int32" />
+    <Property Name="idAssignmentType" Type="Int32" />
+    <Property Name="idAnchorAssignmentType" Type="Int32" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblUserType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="upDateDate" Type="DateTime" Precision="3" />
+    <Property Name="deleteDate" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="HSCMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAssignment" EntityType="Self.tblAssignment" />
+    <EntitySet Name="tblAssignmentType" EntityType="Self.tblAssignmentType" />
+    <EntitySet Name="tblCategory" EntityType="Self.tblCategory" />
+    <EntitySet Name="tblCellar" EntityType="Self.tblCellar" />
+    <EntitySet Name="tblCellarArea" EntityType="Self.tblCellarArea" />
+    <EntitySet Name="tblContactInformation" EntityType="Self.tblContactInformation" />
+    <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
+    <EntitySet Name="tblDownloadAssignment" EntityType="Self.tblDownloadAssignment" />
+    <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" />
+    <EntitySet Name="tblFileManager" EntityType="Self.tblFileManager" />
+    <EntitySet Name="tblLoanAssignment" EntityType="Self.tblLoanAssignment" />
+    <EntitySet Name="tblLoanAssignmentFileManager" EntityType="Self.tblLoanAssignmentFileManager" />
+    <EntitySet Name="tblProduct" EntityType="Self.tblProduct" />
+    <EntitySet Name="tblProductFileManager" EntityType="Self.tblProductFileManager" />
+    <EntitySet Name="tblProductProvider" EntityType="Self.tblProductProvider" />
+    <EntitySet Name="tblProductType" EntityType="Self.tblProductType" />
+    <EntitySet Name="tblProverContactInformation" EntityType="Self.tblProverContactInformation" />
+    <EntitySet Name="tblProvider" EntityType="Self.tblProvider" />
+    <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" />
+    <EntitySet Name="tblTransactionConfigurate" EntityType="Self.tblTransactionConfigurate" />
+    <EntitySet Name="tblTransactionType" EntityType="Self.tblTransactionType" />
+    <EntitySet Name="tblTypePermission" EntityType="Self.tblTypePermission" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="tblUserConfiguration" EntityType="Self.tblUserConfiguration" />
+    <EntitySet Name="tblUserType" EntityType="Self.tblUserType" />
+  </EntityContainer>
+</Schema>

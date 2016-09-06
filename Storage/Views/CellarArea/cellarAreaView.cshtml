@@ -1,0 +1,60 @@
+﻿@model Storage.Models.Administration.CellarAreaViewModels
+
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+    <p>
+        <label class="ActionPop" data-url="@Url.Action("cellarAreaCrate")">Create New</label>
+    </p>
+
+    if (ViewBag.successful)
+    {
+        <div class="alert alert-success" role="alert"><label class="glyphicon glyphicon-ok"></label> @ViewBag.Message</div>
+    }
+
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Detail</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        @{int i = 1;}
+        @foreach (var item in Model.CellarAreaList)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.name</td>
+                <td>@item.detail</td>
+                <td @if (@item.state == "Active") { @(" style = color:green;")    ; } else { @(" style = color:red;") ;  }>
+                    @item.state
+            </td>
+            <td>
+                <label class="ActionPop" data-url="@Url.Action("cellarAreaUpdate", new { id = item.id })">Edit</label>
+                @if (@item.state == "Active")
+                {
+                    @Html.ActionLink("Disable", "cellarAreaDisable", new { id = item.id, state = "Disable" });
+                }
+                else
+                {
+                    @Html.ActionLink("Active", "cellarAreaDisable", new { id = item.id, state = "Active" });
+                }
+            </td>
+        </tr>
+    i++;
+}
+    </table>
+    <p>
+        <label class="ActionPop" data-url="@Url.Action("cellarAreaCrate")">Create New</label>
+    </p>
+        }

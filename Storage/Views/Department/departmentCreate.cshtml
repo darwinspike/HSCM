@@ -1,0 +1,38 @@
+﻿@model Storage.Models.Administration.DepartmentViewModels
+
+
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.Label("Name", "Name", new { @class = "col-sm-2 control-label" })
+                    @Html.EditorFor(model => model.Department.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Department.name)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.Label("Detail", "Detail", new { @class = "col-sm-2 control-label" })
+                    @Html.EditorFor(model => model.Department.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Department.detail)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

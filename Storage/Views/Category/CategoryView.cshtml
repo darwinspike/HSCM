@@ -1,0 +1,82 @@
+﻿@model Storage.Models.Administration.CategoryViewModels
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+
+
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+    <p>
+        <label class="ActionPop" data-url="@Url.Action("CategoryCreate", "Category")">Create New</label>
+    </p>
+
+
+    if (ViewBag.successful)
+    {
+        <div class="alert alert-success" role="alert"><label class="glyphicon glyphicon-ok"></label> @ViewBag.Message</div>
+    }
+
+<table class="table">
+    @{int i = 1;}
+
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Detail</th>
+        <th>State</th>
+        <th></th>
+    </tr>
+    @{string father = ""; }
+    @foreach (var item in Model.CategoryList)
+    {
+        if (item.CategoryID == 0)
+        {
+            father = " style=color:black;";
+        }
+        else
+        {
+            father = " style=color:#666;";
+        }
+        <tr @father>
+            <td>@if (item.CategoryID == 0)
+            { @i;
+            }  </td>
+            <td>@item.name</td>
+            <td>@item.detail</td>
+            <td @if (@item.state == "Active")
+            {  @(" style = color:green;")       ;
+            }
+            else
+            { @(" style = color:red;")       ;
+            }>@item.state</td>
+            <td>
+                <label class="ActionPop" data-url="@Url.Action("CategoryUpdate", new { id = item.id })">Edit</label>
+                @if (@item.state == "Active")
+                {  @Html.ActionLink("Disable", "CategoryDisable", new { id = item.id, state = "Disable" });
+                }
+                else
+                { @Html.ActionLink("Active", "CategoryDisable", new { id = item.id, state = "Active" });
+                }
+            </td>
+
+        </tr>
+        if (item.CategoryID == 0)
+        {
+            i++;
+        }
+
+    }
+</table>
+<p>
+    <label class="ActionPop" data-url="@Url.Action("CategoryCreate", "Category")">Create New</label>
+</p>
+
+        }
+
+
+

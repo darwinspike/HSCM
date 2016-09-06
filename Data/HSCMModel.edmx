@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HSCMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAssignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="int" />
+          <Property Name="loan" Type="int" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="idEmployee" Type="int" />
+          <Property Name="idAssignmentType" Type="int" />
+          <Property Name="idAnchorAssingment" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblAssignmentType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idCategory" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblCellar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="int" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="idcellarArea" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblCellarArea">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblContactInformation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="phoneNumber" Type="int" />
+          <Property Name="cellPhone" Type="int" />
+          <Property Name="faxPhone" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblDownloadAssignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="int" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="idEmployee" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="idUserType" Type="int" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblFileManager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fileName" Type="varchar" MaxLength="100" />
+          <Property Name="fileType" Type="varchar" MaxLength="50" />
+          <Property Name="fileSize" Type="int" />
+          <Property Name="fileFile" Type="image" />
+          <Property Name="fileDetail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblLoanAssignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProducto" Type="int" />
+          <Property Name="stateProduct" Type="varchar" MaxLength="25" />
+          <Property Name="dateLoan" Type="datetime" />
+          <Property Name="detailLoan" Type="varchar" MaxLength="255" />
+          <Property Name="dateReturn" Type="datetime" />
+          <Property Name="detailReturn" Type="varchar" MaxLength="255" />
+          <Property Name="idAssignment" Type="int" />
+          <Property Name="idEmployee" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblLoanAssignmentFileManager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idLoanAssignment" Type="int" />
+          <Property Name="idFileManager" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="unit" Type="varchar" MaxLength="100" />
+          <Property Name="idProductType" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblProductFileManager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="idFileManager" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblProductProvider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="idProvider" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblProductType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblProverContactInformation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProvider" Type="int" />
+          <Property Name="idContactInformation" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblProvider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="companyName" Type="varchar" MaxLength="100" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="int" />
+          <Property Name="idProvide" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblTransactionConfigurate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTransaction" Type="int" />
+          <Property Name="idTransactionType" Type="int" />
+          <Property Name="idAnchorTransaction" Type="int" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblTransactionType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblTypePermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="numberLevel" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user" Type="varchar" MaxLength="100" />
+          <Property Name="password" Type="text" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblUserConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="idTypePermission" Type="int" />
+          <Property Name="idCellarArea" Type="int" />
+          <Property Name="idAssignmentType" Type="int" />
+          <Property Name="idAnchorAssignmentType" Type="int" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblUserType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="upDateDate" Type="datetime" />
+          <Property Name="deleteDate" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityContainer Name="HSCMModelStoreContainer">
+          <EntitySet Name="tblAssignment" EntityType="Self.tblAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAssignmentType" EntityType="Self.tblAssignmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCellar" EntityType="Self.tblCellar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCellarArea" EntityType="Self.tblCellarArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContactInformation" EntityType="Self.tblContactInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDownloadAssignment" EntityType="Self.tblDownloadAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFileManager" EntityType="Self.tblFileManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLoanAssignment" EntityType="Self.tblLoanAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLoanAssignmentFileManager" EntityType="Self.tblLoanAssignmentFileManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductFileManager" EntityType="Self.tblProductFileManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductProvider" EntityType="Self.tblProductProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductType" EntityType="Self.tblProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProverContactInformation" EntityType="Self.tblProverContactInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProvider" EntityType="Self.tblProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransactionConfigurate" EntityType="Self.tblTransactionConfigurate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransactionType" EntityType="Self.tblTransactionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTypePermission" EntityType="Self.tblTypePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserConfiguration" EntityType="Self.tblUserConfiguration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserType" EntityType="Self.tblUserType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HSCMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAssignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="loan" Type="Int32" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="idEmployee" Type="Int32" />
+          <Property Name="idAssignmentType" Type="Int32" />
+          <Property Name="idAnchorAssingment" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblAssignmentType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCategory" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCellar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="idcellarArea" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCellarArea">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblContactInformation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phoneNumber" Type="Int32" />
+          <Property Name="cellPhone" Type="Int32" />
+          <Property Name="faxPhone" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDownloadAssignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="idEmployee" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idUserType" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblFileManager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fileSize" Type="Int32" />
+          <Property Name="fileFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fileDetail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblLoanAssignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProducto" Type="Int32" />
+          <Property Name="stateProduct" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="dateLoan" Type="DateTime" Precision="3" />
+          <Property Name="detailLoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dateReturn" Type="DateTime" Precision="3" />
+          <Property Name="detailReturn" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="idAssignment" Type="Int32" />
+          <Property Name="idEmployee" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblLoanAssignmentFileManager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idLoanAssignment" Type="Int32" />
+          <Property Name="idFileManager" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idProductType" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProductFileManager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="idFileManager" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProductProvider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="idProvider" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProductType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProverContactInformation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProvider" Type="Int32" />
+          <Property Name="idContactInformation" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblProvider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="idProvide" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTransactionConfigurate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTransaction" Type="Int32" />
+          <Property Name="idTransactionType" Type="Int32" />
+          <Property Name="idAnchorTransaction" Type="Int32" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTransactionType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTypePermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="numberLevel" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="idTypePermission" Type="Int32" />
+          <Property Name="idCellarArea" Type="Int32" />
+          <Property Name="idAssignmentType" Type="Int32" />
+          <Property Name="idAnchorAssignmentType" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="upDateDate" Type="DateTime" Precision="3" />
+          <Property Name="deleteDate" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="HSCMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAssignment" EntityType="Self.tblAssignment" />
+          <EntitySet Name="tblAssignmentType" EntityType="Self.tblAssignmentType" />
+          <EntitySet Name="tblCategory" EntityType="Self.tblCategory" />
+          <EntitySet Name="tblCellar" EntityType="Self.tblCellar" />
+          <EntitySet Name="tblCellarArea" EntityType="Self.tblCellarArea" />
+          <EntitySet Name="tblContactInformation" EntityType="Self.tblContactInformation" />
+          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
+          <EntitySet Name="tblDownloadAssignment" EntityType="Self.tblDownloadAssignment" />
+          <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" />
+          <EntitySet Name="tblFileManager" EntityType="Self.tblFileManager" />
+          <EntitySet Name="tblLoanAssignment" EntityType="Self.tblLoanAssignment" />
+          <EntitySet Name="tblLoanAssignmentFileManager" EntityType="Self.tblLoanAssignmentFileManager" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" />
+          <EntitySet Name="tblProductFileManager" EntityType="Self.tblProductFileManager" />
+          <EntitySet Name="tblProductProvider" EntityType="Self.tblProductProvider" />
+          <EntitySet Name="tblProductType" EntityType="Self.tblProductType" />
+          <EntitySet Name="tblProverContactInformation" EntityType="Self.tblProverContactInformation" />
+          <EntitySet Name="tblProvider" EntityType="Self.tblProvider" />
+          <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" />
+          <EntitySet Name="tblTransactionConfigurate" EntityType="Self.tblTransactionConfigurate" />
+          <EntitySet Name="tblTransactionType" EntityType="Self.tblTransactionType" />
+          <EntitySet Name="tblTypePermission" EntityType="Self.tblTypePermission" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserConfiguration" EntityType="Self.tblUserConfiguration" />
+          <EntitySet Name="tblUserType" EntityType="Self.tblUserType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HSCMModelStoreContainer" CdmEntityContainer="HSCMEntities">
+          <EntitySetMapping Name="tblAssignment">
+            <EntityTypeMapping TypeName="HSCMModel.tblAssignment">
+              <MappingFragment StoreEntitySet="tblAssignment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="loan" ColumnName="loan" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+                <ScalarProperty Name="idAssignmentType" ColumnName="idAssignmentType" />
+                <ScalarProperty Name="idAnchorAssingment" ColumnName="idAnchorAssingment" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAssignmentType">
+            <EntityTypeMapping TypeName="HSCMModel.tblAssignmentType">
+              <MappingFragment StoreEntitySet="tblAssignmentType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategory">
+            <EntityTypeMapping TypeName="HSCMModel.tblCategory">
+              <MappingFragment StoreEntitySet="tblCategory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCellar">
+            <EntityTypeMapping TypeName="HSCMModel.tblCellar">
+              <MappingFragment StoreEntitySet="tblCellar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idcellarArea" ColumnName="idcellarArea" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCellarArea">
+            <EntityTypeMapping TypeName="HSCMModel.tblCellarArea">
+              <MappingFragment StoreEntitySet="tblCellarArea">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContactInformation">
+            <EntityTypeMapping TypeName="HSCMModel.tblContactInformation">
+              <MappingFragment StoreEntitySet="tblContactInformation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="cellPhone" ColumnName="cellPhone" />
+                <ScalarProperty Name="faxPhone" ColumnName="faxPhone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartment">
+            <EntityTypeMapping TypeName="HSCMModel.tblDepartment">
+              <MappingFragment StoreEntitySet="tblDepartment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDownloadAssignment">
+            <EntityTypeMapping TypeName="HSCMModel.tblDownloadAssignment">
+              <MappingFragment StoreEntitySet="tblDownloadAssignment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployee">
+            <EntityTypeMapping TypeName="HSCMModel.tblEmployee">
+              <MappingFragment StoreEntitySet="tblEmployee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="idUserType" ColumnName="idUserType" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFileManager">
+            <EntityTypeMapping TypeName="HSCMModel.tblFileManager">
+              <MappingFragment StoreEntitySet="tblFileManager">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fileName" ColumnName="fileName" />
+                <ScalarProperty Name="fileType" ColumnName="fileType" />
+                <ScalarProperty Name="fileSize" ColumnName="fileSize" />
+                <ScalarProperty Name="fileFile" ColumnName="fileFile" />
+                <ScalarProperty Name="fileDetail" ColumnName="fileDetail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoanAssignment">
+            <EntityTypeMapping TypeName="HSCMModel.tblLoanAssignment">
+              <MappingFragment StoreEntitySet="tblLoanAssignment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="stateProduct" ColumnName="stateProduct" />
+                <ScalarProperty Name="dateLoan" ColumnName="dateLoan" />
+                <ScalarProperty Name="detailLoan" ColumnName="detailLoan" />
+                <ScalarProperty Name="dateReturn" ColumnName="dateReturn" />
+                <ScalarProperty Name="detailReturn" ColumnName="detailReturn" />
+                <ScalarProperty Name="idAssignment" ColumnName="idAssignment" />
+                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoanAssignmentFileManager">
+            <EntityTypeMapping TypeName="HSCMModel.tblLoanAssignmentFileManager">
+              <MappingFragment StoreEntitySet="tblLoanAssignmentFileManager">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idLoanAssignment" ColumnName="idLoanAssignment" />
+                <ScalarProperty Name="idFileManager" ColumnName="idFileManager" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct">
+            <EntityTypeMapping TypeName="HSCMModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="idProductType" ColumnName="idProductType" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductFileManager">
+            <EntityTypeMapping TypeName="HSCMModel.tblProductFileManager">
+              <MappingFragment StoreEntitySet="tblProductFileManager">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idFileManager" ColumnName="idFileManager" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductProvider">
+            <EntityTypeMapping TypeName="HSCMModel.tblProductProvider">
+              <MappingFragment StoreEntitySet="tblProductProvider">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idProvider" ColumnName="idProvider" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductType">
+            <EntityTypeMapping TypeName="HSCMModel.tblProductType">
+              <MappingFragment StoreEntitySet="tblProductType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProverContactInformation">
+            <EntityTypeMapping TypeName="HSCMModel.tblProverContactInformation">
+              <MappingFragment StoreEntitySet="tblProverContactInformation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idProvider" ColumnName="idProvider" />
+                <ScalarProperty Name="idContactInformation" ColumnName="idContactInformation" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProvider">
+            <EntityTypeMapping TypeName="HSCMModel.tblProvider">
+              <MappingFragment StoreEntitySet="tblProvider">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransaction">
+            <EntityTypeMapping TypeName="HSCMModel.tblTransaction">
+              <MappingFragment StoreEntitySet="tblTransaction">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="idProvide" ColumnName="idProvide" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransactionConfigurate">
+            <EntityTypeMapping TypeName="HSCMModel.tblTransactionConfigurate">
+              <MappingFragment StoreEntitySet="tblTransactionConfigurate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTransaction" ColumnName="idTransaction" />
+                <ScalarProperty Name="idTransactionType" ColumnName="idTransactionType" />
+                <ScalarProperty Name="idAnchorTransaction" ColumnName="idAnchorTransaction" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransactionType">
+            <EntityTypeMapping TypeName="HSCMModel.tblTransactionType">
+              <MappingFragment StoreEntitySet="tblTransactionType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTypePermission">
+            <EntityTypeMapping TypeName="HSCMModel.tblTypePermission">
+              <MappingFragment StoreEntitySet="tblTypePermission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="numberLevel" ColumnName="numberLevel" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="HSCMModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserConfiguration">
+            <EntityTypeMapping TypeName="HSCMModel.tblUserConfiguration">
+              <MappingFragment StoreEntitySet="tblUserConfiguration">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idTypePermission" ColumnName="idTypePermission" />
+                <ScalarProperty Name="idCellarArea" ColumnName="idCellarArea" />
+                <ScalarProperty Name="idAssignmentType" ColumnName="idAssignmentType" />
+                <ScalarProperty Name="idAnchorAssignmentType" ColumnName="idAnchorAssignmentType" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserType">
+            <EntityTypeMapping TypeName="HSCMModel.tblUserType">
+              <MappingFragment StoreEntitySet="tblUserType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="upDateDate" ColumnName="upDateDate" />
+                <ScalarProperty Name="deleteDate" ColumnName="deleteDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

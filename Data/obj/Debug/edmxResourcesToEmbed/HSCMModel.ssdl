@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HSCMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblAssignment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="loan" Type="int" />
+    <Property Name="idProduct" Type="int" />
+    <Property Name="idEmployee" Type="int" />
+    <Property Name="idAssignmentType" Type="int" />
+    <Property Name="idAnchorAssingment" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblAssignmentType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblCategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idCategory" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblCellar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="idProduct" Type="int" />
+    <Property Name="idcellarArea" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblCellarArea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblContactInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="phoneNumber" Type="int" />
+    <Property Name="cellPhone" Type="int" />
+    <Property Name="faxPhone" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblDepartment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblDownloadAssignment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="idProduct" Type="int" />
+    <Property Name="idEmployee" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblEmployee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="100" />
+    <Property Name="lastName" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="idUserType" Type="int" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblFileManager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fileName" Type="varchar" MaxLength="100" />
+    <Property Name="fileType" Type="varchar" MaxLength="50" />
+    <Property Name="fileSize" Type="int" />
+    <Property Name="fileFile" Type="image" />
+    <Property Name="fileDetail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblLoanAssignment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProducto" Type="int" />
+    <Property Name="stateProduct" Type="varchar" MaxLength="25" />
+    <Property Name="dateLoan" Type="datetime" />
+    <Property Name="detailLoan" Type="varchar" MaxLength="255" />
+    <Property Name="dateReturn" Type="datetime" />
+    <Property Name="detailReturn" Type="varchar" MaxLength="255" />
+    <Property Name="idAssignment" Type="int" />
+    <Property Name="idEmployee" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblLoanAssignmentFileManager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idLoanAssignment" Type="int" />
+    <Property Name="idFileManager" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="unit" Type="varchar" MaxLength="100" />
+    <Property Name="idProductType" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblProductFileManager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProduct" Type="int" />
+    <Property Name="idFileManager" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblProductProvider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProduct" Type="int" />
+    <Property Name="idProvider" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblProductType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblProverContactInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProvider" Type="int" />
+    <Property Name="idContactInformation" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblProvider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="companyName" Type="varchar" MaxLength="100" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblTransaction">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="idProvide" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblTransactionConfigurate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTransaction" Type="int" />
+    <Property Name="idTransactionType" Type="int" />
+    <Property Name="idAnchorTransaction" Type="int" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblTransactionType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblTypePermission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="numberLevel" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user" Type="varchar" MaxLength="100" />
+    <Property Name="password" Type="text" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblUserConfiguration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="idTypePermission" Type="int" />
+    <Property Name="idCellarArea" Type="int" />
+    <Property Name="idAssignmentType" Type="int" />
+    <Property Name="idAnchorAssignmentType" Type="int" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblUserType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="255" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="upDateDate" Type="datetime" />
+    <Property Name="deleteDate" Type="datetime" />
+    <Property Name="state" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityContainer Name="HSCMModelStoreContainer">
+    <EntitySet Name="tblAssignment" EntityType="Self.tblAssignment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssignmentType" EntityType="Self.tblAssignmentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCellar" EntityType="Self.tblCellar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCellarArea" EntityType="Self.tblCellarArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblContactInformation" EntityType="Self.tblContactInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDownloadAssignment" EntityType="Self.tblDownloadAssignment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFileManager" EntityType="Self.tblFileManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLoanAssignment" EntityType="Self.tblLoanAssignment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLoanAssignmentFileManager" EntityType="Self.tblLoanAssignmentFileManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductFileManager" EntityType="Self.tblProductFileManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductProvider" EntityType="Self.tblProductProvider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductType" EntityType="Self.tblProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProverContactInformation" EntityType="Self.tblProverContactInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProvider" EntityType="Self.tblProvider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTransactionConfigurate" EntityType="Self.tblTransactionConfigurate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTransactionType" EntityType="Self.tblTransactionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTypePermission" EntityType="Self.tblTypePermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserConfiguration" EntityType="Self.tblUserConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserType" EntityType="Self.tblUserType" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

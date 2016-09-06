@@ -1,0 +1,4 @@
+C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Entity\bin\Debug\Entity.dll
+C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Entity\bin\Debug\Entity.pdb
+C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Entity\obj\Debug\Entity.dll
+C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Entity\obj\Debug\Entity.pdb

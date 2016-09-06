@@ -1,0 +1,28 @@
+﻿@model Bussines.Handler.ErrorObject
+
+
+
+<script type="text/javascript">
+        $(window).load(function () {
+            $('#myModal').modal('show');
+        });
+
+        var errores = "Erro: \n Source:'@Model.Source \n Massage: @Model.Message'";
+        console.log(errores);
+
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-danger" id="myModalLabel">Error</h4>
+            </div>
+            <div class="modal-body">
+                <h6 class="text-danger">An error occurred while processing your request.</h6>
+            </div>
+        </div>
+    </div>
+</div>
