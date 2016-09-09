@@ -46,6 +46,7 @@
     <Compile Include="Administration\CellarAreaBussines.cs" />
     <Compile Include="Administration\DepartmentBussines.cs" />
     <Compile Include="Administration\ProviderBussines.cs" />
+    <Compile Include="Employee\EmployeeBussines.cs" />
     <Compile Include="Handler\ErrorObject.cs" />
     <Compile Include="Product\ProductTypeBussines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

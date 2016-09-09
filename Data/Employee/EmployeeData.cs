@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using Entity;
 using System.Data.Entity;
+using Entity;
 
-namespace Data.User
+namespace Data.Employee
 {
-    public class UserData
+    public class EmployeeData
     {
 
         #region Property
@@ -22,80 +21,52 @@ namespace Data.User
         public class Select
         {
             /// <summary>
-            /// Return All Users
+            /// Return All Employee
             /// </summary>
-            /// <returns>All User Or null If Exist Error</returns>
-            public static Tuple<ErrorObject, List<tblUser>> GetUserList()
+            /// <returns>All Employee Or null If Exist Error</returns>
+            public static Tuple<ErrorObject, List<tblEmployee>> GetEmployeeList()
             {
-                List<tblUser> Users = new List<tblUser>();
+                List<tblEmployee> data = new List<tblEmployee>();
                 erros = new ErrorObject();
-
                 try
                 {
                     using (HSCMEntities db = new HSCMEntities())
                     {
-                        Users = db.tblUser.ToList();
+                        data = db.tblEmployee.ToList();
                     };
-
-                    return new Tuple<ErrorObject, List<tblUser>>(erros.IfError(false), Users);
+                    return new Tuple<ErrorObject, List<tblEmployee>>(erros.IfError(false), data);
                 }
                 catch (Exception ex)
                 {
                     erros.InfoError(ex);
-                    return new Tuple<ErrorObject, List<tblUser>>(erros, Users);
+                    return new Tuple<ErrorObject, List<tblEmployee>>(erros, data);
                 }
 
             }
 
             /// <summary>
-            /// Return Users By Specific ID
+            /// Return Employee By Specific ID
             /// </summary>
-            /// <param name="id">User ID</param>
-            /// <returns>User By Specific ID Or null If Exist Error</returns>
-            public static Tuple<ErrorObject, tblUser> GetUser(int id)
+            /// <param name="id">Employee ID</param>
+            /// <returns>Employee By Specific ID Or null If Exist Error</returns>
+            public static Tuple<ErrorObject, tblEmployee> GetEmployee(int id)
             {
-                tblUser Users = new tblUser();
+                tblEmployee data = new tblEmployee();
                 erros = new ErrorObject();
 
                 try
                 {
                     using (HSCMEntities db = new HSCMEntities())
                     {
-                        Users = db.tblUser.Find(id);
+                        data = db.tblEmployee.Find(id);
                     }
                     erros.Error = false;
-                    return new Tuple<ErrorObject, tblUser>(erros.IfError(false), Users);
+                    return new Tuple<ErrorObject, tblEmployee>(erros.IfError(false), data);
                 }
                 catch (Exception ex)
                 {
                     erros.InfoError(ex);
-                    return new Tuple<ErrorObject, tblUser>(erros, Users);
-                }
-            }
-
-            /// <summary>
-            /// Get User Name To Specific UserID
-            /// </summary>
-            /// <param name="id">UserID</param>
-            /// <returns>User Name To Specific UserID</returns>
-            public static Tuple<ErrorObject, string> GetUserName(int id)
-            {
-                string Users = "";
-                erros = new ErrorObject();
-
-                try
-                {
-                    using (HSCMEntities db = new HSCMEntities())
-                    {
-                        Users = db.tblUser.Find(id).user;
-                    }
-                    erros.Error = false;
-                    return new Tuple<ErrorObject, string>(erros.IfError(false), Users);
-                }
-                catch (Exception ex)
-                {
-                    erros.InfoError(ex);
-                    return new Tuple<ErrorObject, string>(erros, Users);
+                    return new Tuple<ErrorObject, tblEmployee>(erros, data);
                 }
             }
         }
@@ -105,27 +76,27 @@ namespace Data.User
         public class Insert
         {
             /// <summary>
-            /// Insert Users Information
+            /// Insert Employee Information
             /// </summary>
-            /// <param name="data">Users Information</param>
+            /// <param name="data">Employee Information</param>
             /// <returns>Number Affected Row</returns>
-            public static Tuple<ErrorObject, string> Users(tblUser data)
+            public static Tuple<ErrorObject, string> Employee(tblEmployee data)
             {
                 erros = new ErrorObject();
                 try
                 {
                     using (HSCMEntities db = new HSCMEntities())
                     {
-                        int propertyFind = db.tblUser.Count();
+                        int propertyFind = db.tblEmployee.Count();
                         if (propertyFind > 0)
                         {
-                            data.id = db.tblUser.Max(s => s.id);
+                            data.id = db.tblEmployee.Max(s => s.id);
                         }
                         else
                         {
                             data.id = 1;
                         }
-                        db.tblUser.Add(data);
+                        db.tblEmployee.Add(data);
                         result = db.SaveChanges();
                         Message = "Affected Row: " + result.ToString();
 
@@ -148,27 +119,21 @@ namespace Data.User
         public class Update
         {
             /// <summary>
-            /// Update Users Information
+            /// Update Employee Information
             /// </summary>
-            /// <param name="data">Users Information</param>
+            /// <param name="data">Employee Information</param>
             /// <returns>Number Affected Row</returns>
-            public static Tuple<ErrorObject, string> Users(tblUser data)
+            public static Tuple<ErrorObject, string> Employee(tblEmployee data)
             {
                 erros = new ErrorObject();
                 try
                 {
                     using (HSCMEntities db = new HSCMEntities())
                     {
-                        var row = db.tblUser.Single(p => p.id == data.id);
-                        if (!String.IsNullOrEmpty(data.password)) {
-                            row.password = data.password;
-                        }
-                        row.user = data.user;
-                        row.upDateDate = DateTime.Now;
+                        db.Entry(data).State = EntityState.Modified;
                         result = db.SaveChanges();
-
                         Message = "Affected Row: " + result.ToString();
-                        erros.Error = false;
+
                         return new Tuple<ErrorObject, string>(erros.IfError(false), Message);
                     }
                 }
@@ -185,19 +150,19 @@ namespace Data.User
         public class Delete
         {
             /// <summary>
-            /// Update State Fields To Specific UserID
+            /// Update State Fields To Specific Employee ID
             /// </summary>
-            /// <param name="UserID">User ID</param>
+            /// <param name="EmployeeID">Employee ID</param>
             /// <param name="state">Active Or Disable</param>
-            /// <returns></returns>
-            public static Tuple<ErrorObject, string> UserDisable(int UserID, string state)
+            /// <returns>ID Department ID</returns>
+            public static Tuple<ErrorObject, string> EmployeeDisable(int EmployeeID, string state)
             {
                 erros = new ErrorObject();
                 try
                 {
                     using (HSCMEntities db = new HSCMEntities())
                     {
-                        var row = db.tblUser.Single(p => p.id == UserID);
+                        var row = db.tblEmployee.Single(p => p.id == EmployeeID);
                         row.state = state;
                         row.deleteDate = DateTime.Now;
                         result = db.SaveChanges();
@@ -216,6 +181,7 @@ namespace Data.User
 
         }
         #endregion
+
 
     }
 }

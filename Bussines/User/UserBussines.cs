@@ -12,11 +12,19 @@ using Bussines.Handler;
 namespace Bussines.User
 {
 
-    public class User
+    public class Users
     {
         public int id { get; set; }
         public string user { get; set; }
+
+        [Required(ErrorMessage = "Pass word is required")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
+
+        [Required(ErrorMessage = "Pass word is required")]
+        [DataType(DataType.Password)]
+        public string RepeatPassword { get; set; }
+
         public Nullable<System.DateTime> createDate { get; set; }
         public Nullable<System.DateTime> upDateDate { get; set; }
         public Nullable<System.DateTime> deleteDate { get; set; }
@@ -36,8 +44,8 @@ namespace Bussines.User
         {
             public Handler.ErrorObject Error { get; set; }
             public string Message { get; set; }
-            public User User { get; set; }
-            public List<User> UserList { get; set; }
+            public Users User { get; set; }
+            public List<Users> UserList { get; set; }
         }
 
         /// <summary>
@@ -61,7 +69,7 @@ namespace Bussines.User
             public static GetUserResponse GetUserList()
             {
                 GetUserResponse response = new GetUserResponse();
-                response.UserList = new List<User>();
+                response.UserList = new List<Users>();
                 response.Error = new Handler.ErrorObject();
 
                 try
@@ -71,11 +79,11 @@ namespace Bussines.User
                     {
                         foreach (var item in User.Item2)
                         {
-                            response.UserList.Add(new User()
+                            response.UserList.Add(new Users()
                             {
                                 id = item.id,
                                 user = item.user,
-                                password = item.password,
+                                password = null,
                                 createDate = item.createDate,
                                 upDateDate = item.upDateDate,
                                 deleteDate = item.deleteDate,
@@ -104,17 +112,17 @@ namespace Bussines.User
             {
                 GetUserResponse response = new GetUserResponse();
                 response.Error = new Handler.ErrorObject();
-                response.User = new User();
+                response.User = new Users();
                 try
                 {
                     var User = UserData.Select.GetUser(request.UserID);
                     if (!User.Item1.Error)
                     {
-                        response.User = new User()
+                        response.User = new Users()
                         {
                             id = User.Item2.id,
                             user = User.Item2.user,
-                            password = User.Item2.password,
+                            password = null,
                             createDate = User.Item2.createDate,
                             upDateDate = User.Item2.upDateDate,
                             deleteDate = User.Item2.deleteDate,
@@ -132,6 +140,38 @@ namespace Bussines.User
                     response.Error.InfoError(ex);
                 }
 
+                return response;
+            }
+
+            /// <summary>
+            /// Get User Name To Specific UserID
+            /// </summary>
+            /// <param name="request">UserID</param>
+            /// <returns>User Name To Specific UserID</returns>
+            public static GetUserResponse GetUserName(int request) {
+                GetUserResponse response = new GetUserResponse();
+                response.Error = new Handler.ErrorObject();
+                response.User = new Users();
+                try
+                {
+                    var User = UserData.Select.GetUserName(request);
+                    if (!User.Item1.Error)
+                    {
+                        response.User = new Users()
+                        {
+                            user = User.Item2
+                        };
+
+                    }
+                    else
+                    {
+                        response.Error.InfoError(User.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
                 return response;
             }
         }
@@ -153,7 +193,7 @@ namespace Bussines.User
 
                 try
                 {
-                    tblUser CellarArea = new tblUser()
+                    tblUser user = new tblUser()
                     {
                         id = request.User.id,
                         user = request.User.user,
@@ -164,7 +204,7 @@ namespace Bussines.User
                         state = "Active"
                     };
 
-                    var result = CellarAreaData.Insert.CellarArea(CellarArea);
+                    var result = UserData.Insert.Users(user);
                     if (result.Item1.Error)
                     {
                         response.Error.InfoError(result.Item1);
@@ -196,24 +236,24 @@ namespace Bussines.User
             /// </summary>
             /// <param name="request">User Information</param>
             /// <returns>Affected Row Or Error If Exist</returns>
-            public static GetCellarAreaResponse CellarArea(GetCellarAreaResponse request)
+            public static GetUserResponse User(GetUserResponse request)
             {
 
-                GetCellarAreaResponse response = new GetCellarAreaResponse();
+                GetUserResponse response = new GetUserResponse();
                 try
                 {
-                    tblCellarArea CellarArea = new tblCellarArea()
+                    tblUser user = new tblUser()
                     {
-                        id = request.CellarArea.id,
-                        name = request.CellarArea.name,
-                        detail = request.CellarArea.detail,
-                        createDate = request.CellarArea.createDate,
+                        id = request.User.id,
+                        user = request.User.user,
+                        password = request.User.password,
+                        createDate = request.User.createDate,
                         upDateDate = DateTime.Now,
                         deleteDate = null,
                         state = "Active"
                     };
 
-                    var result = CellarAreaData.Update.CellarArea(CellarArea);
+                    var result = UserData.Update.Users(user);
                     if (result.Item1.Error)
                     {
                         response.Error.InfoError(result.Item1);
@@ -246,12 +286,12 @@ namespace Bussines.User
             /// <param name="UserID">User ID</param>
             /// <param name="state">State</param>
             /// <returns>Affected Row Or Error If Exist</returns>
-            public static GetCellarAreaResponse UserDisable(int UserID, string state)
+            public static GetUserResponse UserDisable(int UserID, string state)
             {
-                GetCellarAreaResponse response = new GetCellarAreaResponse();
+                GetUserResponse response = new GetUserResponse();
                 try
                 {
-                    var result = CellarAreaData.Delete.CellarAreaDisable(UserID, state);
+                    var result = UserData.Delete.UserDisable(UserID, state);
                     if (result.Item1.Error)
                     {
                         response.Error.InfoError(result.Item1);

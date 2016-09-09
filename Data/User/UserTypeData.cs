@@ -71,6 +71,32 @@ namespace Data.User
                     return new Tuple<ErrorObject, tblUserType>(erros, UserType);
                 }
             }
+
+            /// <summary>
+            /// Get User Type Name
+            /// </summary>
+            /// <param name="id">UserTypeID</param>
+            /// <returns>User Type Name</returns>
+            public static Tuple<ErrorObject, string> GetUserTypeName(int id)
+            {
+                string UserType = "";
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        UserType = db.tblUserType.Find(id).name;
+                    }
+                    erros.Error = false;
+                    return new Tuple<ErrorObject, string>(erros.IfError(false), UserType);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, string>(erros, UserType);
+                }
+            }         
         }
         #endregion
 

@@ -4,29 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Data.User;
+using Data.Employee;
 using Entity;
 using System.ComponentModel.DataAnnotations;
+using Bussines.Handler;
 
-namespace Bussines.User
+namespace Bussines.Employee
 {
     /// <summary>
     /// Model Site
     /// </summary>
-    public class UserType
+    public class Employees
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
 
-        [DataType(DataType.MultilineText)]
-        public string detail { get; set; }
+        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
+        public string email { get; set; }
+        public Nullable<int> idUserType { get; set; }
+        public Nullable<int> idUser { get; set; }
         public Nullable<System.DateTime> createDate { get; set; }
         public Nullable<System.DateTime> upDateDate { get; set; }
         public Nullable<System.DateTime> deleteDate { get; set; }
         public string state { get; set; }
     }
 
-    public class UserTypeBussines
+    public class EmployeeBussines
     {
 
         #region Logic, Responces and Requests
@@ -34,51 +41,53 @@ namespace Bussines.User
         /// <summary>
         /// When You Need To Get Response
         /// </summary>
-        public class GetUserTypeResponse
+        public class GetEmployeeResponse
         {
             public Handler.ErrorObject Error { get; set; }
             public string Message { get; set; }
-            public UserType UserType { get; set; }
-            public List<UserType> UserTypeList { get; set; }
+            public Employees Employee { get; set; }
+            public List<Employees> EmployeeList { get; set; }
         }
 
         /// <summary>
         /// When you Need To Specify Petition
         /// </summary>
-        public class GetUserTypeRequest
+        public class GetEmployeeRequest
         {
-            public int UserTypeID { get; set; }
+            public int EmployeeID { get; set; }
         }
 
         #endregion
-
 
         #region Select Data
         public class Select
         {
 
             /// <summary>
-            /// Return User Type
+            /// Return Employee List
             /// </summary>
-            /// <returns>User Type List</returns>
-            public static GetUserTypeResponse GetUserTypeList()
+            /// <returns>Employee List</returns>
+            public static GetEmployeeResponse GetEmployeeList()
             {
-                GetUserTypeResponse response = new GetUserTypeResponse();
-                response.UserTypeList = new List<UserType>();
+                GetEmployeeResponse response = new GetEmployeeResponse();
+                response.EmployeeList = new List<Employees>();
                 response.Error = new Handler.ErrorObject();
 
                 try
                 {
-                    var UserType = UserTypeData.Select.GetUserType();
-                    if (!UserType.Item1.Error)
+                    var bussines = EmployeeData.Select.GetEmployeeList();
+                    if (!bussines.Item1.Error)
                     {
-                        foreach (var item in UserType.Item2)
+                        foreach (var item in bussines.Item2)
                         {
-                            response.UserTypeList.Add(new UserType()
+                            response.EmployeeList.Add(new Employees()
                             {
                                 id = item.id,
-                                name = item.name,
-                                detail = item.detail,
+                                firstName = item.firstName,
+                                lastName = item.lastName,
+                                email = item.email,
+                                idUser = item.idUser,
+                                idUserType = item.idUserType,
                                 createDate = item.createDate,
                                 upDateDate = item.upDateDate,
                                 deleteDate = item.deleteDate,
@@ -88,7 +97,7 @@ namespace Bussines.User
                     }
                     else
                     {
-                        response.Error.InfoError(UserType.Item1);
+                        response.Error.InfoError(bussines.Item1);
                     }
                 }
                 catch (Exception ex)
@@ -99,35 +108,38 @@ namespace Bussines.User
             }
 
             /// <summary>
-            /// Return User Type Information
+            /// Return Employee Information
             /// </summary>
-            /// <param name="request">User Type ID</param>
-            /// <returns>UserType Information</returns>
-            public static GetUserTypeResponse GetUserType(GetUserTypeRequest request)
+            /// <param name="request">Employee ID</param>
+            /// <returns>Employee Information</returns>
+            public static GetEmployeeResponse GetEmployee(GetEmployeeRequest request)
             {
-                GetUserTypeResponse response = new GetUserTypeResponse();
+                GetEmployeeResponse response = new GetEmployeeResponse();
                 response.Error = new Handler.ErrorObject();
-                response.UserType = new UserType();
+                response.Employee = new Employees();
                 try
                 {
-                    var UserType = UserTypeData.Select.GetUserType(request.UserTypeID);
-                    if (!UserType.Item1.Error)
+                    var bussines = EmployeeData.Select.GetEmployee(request.EmployeeID);
+                    if (!bussines.Item1.Error)
                     {
-                        response.UserType = new UserType()
+                        response.Employee = new Employees()
                         {
-                            id = UserType.Item2.id,
-                            name = UserType.Item2.name,
-                            detail = UserType.Item2.detail,
-                            createDate = UserType.Item2.createDate,
-                            upDateDate = UserType.Item2.upDateDate,
-                            deleteDate = UserType.Item2.deleteDate,
-                            state = UserType.Item2.state
+                            id = bussines.Item2.id,
+                            firstName = bussines.Item2.firstName,
+                            lastName = bussines.Item2.lastName,
+                            email = bussines.Item2.email,
+                            idUser = bussines.Item2.idUser,
+                            idUserType = bussines.Item2.idUserType,
+                            createDate = bussines.Item2.createDate,
+                            upDateDate = bussines.Item2.upDateDate,
+                            deleteDate = bussines.Item2.deleteDate,
+                            state = bussines.Item2.state
                         };
 
                     }
                     else
                     {
-                        response.Error.InfoError(UserType.Item1);
+                        response.Error.InfoError(bussines.Item1);
                     }
                 }
                 catch (Exception ex)
@@ -137,41 +149,6 @@ namespace Bussines.User
 
                 return response;
             }
-
-            /// <summary>
-            /// Get User Type Name
-            /// </summary>
-            /// <param name="request">UserTypeID</param>
-            /// <returns>User Type Name</returns>
-            public static GetUserTypeResponse GetUserTypeName(int request)
-            {
-                GetUserTypeResponse response = new GetUserTypeResponse();
-                response.Error = new Handler.ErrorObject();
-                response.UserType = new UserType();
-                try
-                {
-                    var UserType = UserTypeData.Select.GetUserTypeName(request);
-                    if (!UserType.Item1.Error)
-                    {
-                        response.UserType = new UserType()
-                        {
-                            name = UserType.Item2
-                        };
-
-                    }
-                    else
-                    {
-                        response.Error.InfoError(UserType.Item1);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    response.Error.InfoError(ex);
-                }
-
-                return response;
-            }
-
         }
         #endregion
 
@@ -182,27 +159,30 @@ namespace Bussines.User
             /// <summary>
             /// Return Affected Row Or Error If Exist
             /// </summary>
-            /// <param name="request">User Type Information</param>
+            /// <param name="request">Employee Information</param>
             /// <returns>Affected Row Or Error If Exist</returns>
-            public static GetUserTypeResponse UserType(GetUserTypeResponse request)
+            public static GetEmployeeResponse Employee(GetEmployeeResponse request)
             {
-                GetUserTypeResponse response = new GetUserTypeResponse();
+                GetEmployeeResponse response = new GetEmployeeResponse();
                 response.Error = new Handler.ErrorObject();
 
                 try
                 {
-                    tblUserType UserType = new tblUserType()
+                    tblEmployee bussines = new tblEmployee()
                     {
-                        id = request.UserType.id,
-                        name = request.UserType.name,
-                        detail = request.UserType.detail,
+                        id = request.Employee.id,
+                        firstName = request.Employee.firstName,
+                        lastName = request.Employee.lastName,
+                        email = request.Employee.email,
+                        idUser = request.Employee.idUser,
+                        idUserType = request.Employee.idUserType,                        
                         createDate = DateTime.Now,
                         upDateDate = null,
                         deleteDate = null,
                         state = "Active"
                     };
 
-                    var result = UserTypeData.Insert.UserType(UserType);
+                    var result = EmployeeData.Insert.Employee(bussines);
                     if (result.Item1.Error)
                     {
                         response.Error.InfoError(result.Item1);
@@ -232,26 +212,29 @@ namespace Bussines.User
             /// <summary>
             /// Return Affected Row Or Error If Exist
             /// </summary>
-            /// <param name="request">CellarArea Information</param>
+            /// <param name="request">Employee Information</param>
             /// <returns>Affected Row Or Error If Exist</returns>
-            public static GetUserTypeResponse UserType(GetUserTypeResponse request)
+            public static GetEmployeeResponse Employee(GetEmployeeResponse request)
             {
 
-                GetUserTypeResponse response = new GetUserTypeResponse();
+                GetEmployeeResponse response = new GetEmployeeResponse();
                 try
                 {
-                    tblUserType UserType = new tblUserType()
+                    tblEmployee bussines = new tblEmployee()
                     {
-                        id = request.UserType.id,
-                        name = request.UserType.name,
-                        detail = request.UserType.detail,
-                        createDate = request.UserType.createDate,
+                        id = request.Employee.id,
+                        firstName = request.Employee.firstName,
+                        lastName = request.Employee.lastName,
+                        email = request.Employee.email,
+                        idUser = request.Employee.idUser,
+                        idUserType = request.Employee.idUserType,
+                        createDate = request.Employee.createDate,
                         upDateDate = DateTime.Now,
                         deleteDate = null,
                         state = "Active"
                     };
 
-                    var result = UserTypeData.Update.UserType(UserType);
+                    var result = EmployeeData.Update.Employee(bussines);
                     if (result.Item1.Error)
                     {
                         response.Error.InfoError(result.Item1);
@@ -281,15 +264,15 @@ namespace Bussines.User
             /// <summary>
             /// Return Affected Row Or Error If Exist
             /// </summary>
-            /// <param name="UserTypeID">UserTypeID</param>
+            /// <param name="EmployeeID">Employee ID</param>
             /// <param name="state">State</param>
             /// <returns>Affected Row Or Error If Exist</returns>
-            public static GetUserTypeResponse UserTypeDisable(int UserTypeID, string state)
+            public static GetEmployeeResponse EmployeeDisable(int EmployeeID, string state)
             {
-                GetUserTypeResponse response = new GetUserTypeResponse();
+                GetEmployeeResponse response = new GetEmployeeResponse();
                 try
                 {
-                    var result = UserTypeData.Delete.UserTypeDisable(UserTypeID, state);
+                    var result = EmployeeData.Delete.EmployeeDisable(EmployeeID, state);
                     if (result.Item1.Error)
                     {
                         response.Error.InfoError(result.Item1);
@@ -307,7 +290,6 @@ namespace Bussines.User
             }
         }
         #endregion
-
 
     }
 }

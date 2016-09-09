@@ -1,0 +1,64 @@
+﻿@model Storage.Models.Employee.EmployeeViewModels
+
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+    <p>
+        <label class="ActionPop" data-url="@Url.Action("EmployeeCreate")">Create New</label>
+    </p>
+
+    if (ViewBag.successful)
+    {
+        <div class="alert alert-success" role="alert"><label class="glyphicon glyphicon-ok"></label> @ViewBag.Message</div>
+    }
+
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>User Type</th>
+            <th>State</th>
+            <th></th>
+        </tr>
+        @{int i = 1;}
+        @foreach (var item in Model.EmployeeList)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.firstName @item.lastName</td>
+                <td>@item.email</td>
+                <td>@Bussines.User.UserBussines.Select.GetUserName((int)item.idUser).User.user</td>
+                <td>@Bussines.User.UserTypeBussines.Select.GetUserTypeName((int)item.idUserType).UserType.name</td>
+                <td @if (@item.state == "Active") { @(" style = color:green;")     ; } else { @(" style = color:red;")  ; }>
+                    @item.state
+                </td>
+                <td>
+                    <label class="ActionPop" data-url="@Url.Action("EmployeeUpdate", new { id = item.id })">Edit</label>
+                    @if (@item.state == "Active")
+                    {
+                        @Html.ActionLink("Disable", "EmployeeDisable", new { id = item.id, state = "Disable" });
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Active", "EmployeeDisable", new { id = item.id, state = "Active" });
+                    }
+                </td>
+            </tr>
+    i++;
+}
+    </table>
+    <p>
+        <label class="ActionPop" data-url="@Url.Action("EmployeeCreate")">Create New</label>
+    </p>
+        }

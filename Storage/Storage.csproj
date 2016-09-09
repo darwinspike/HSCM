@@ -201,10 +201,12 @@
     <Compile Include="Controllers\Administration\CellarAreaController.cs" />
     <Compile Include="Controllers\Administration\DepartmentController.cs" />
     <Compile Include="Controllers\Administration\ProviderController.cs" />
+    <Compile Include="Controllers\Employee\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Product\ProductTypeController.cs" />
     <Compile Include="Controllers\User\TypePermissionController.cs" />
+    <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Controllers\User\UserTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,11 +217,13 @@
     <Compile Include="Models\Administration\CellarAreaViewModels.cs" />
     <Compile Include="Models\Administration\DepartmentViewModels.cs" />
     <Compile Include="Models\Administration\ProviderViewModels.cs" />
+    <Compile Include="Models\Employee\EmployeeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product\ProductTypeViewModels.cs" />
     <Compile Include="Models\User\TypePermissionViewModels.cs" />
     <Compile Include="Models\User\UserTypeViewModels.cs" />
+    <Compile Include="Models\User\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -311,6 +315,12 @@
     <Content Include="Views\ProductType\productTypeEdit.cshtml" />
     <Content Include="Views\TypePermission\PermissionTypeView.cshtml" />
     <Content Include="Views\TypePermission\PermissionTypeUpdate.cshtml" />
+    <Content Include="Views\User\UserView.cshtml" />
+    <Content Include="Views\User\UserCreate.cshtml" />
+    <Content Include="Views\User\UserUpdate.cshtml" />
+    <Content Include="Views\Employee\EmployeeView.cshtml" />
+    <Content Include="Views\Employee\EmployeeCreate.cshtml" />
+    <Content Include="Views\Employee\EmployeeUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

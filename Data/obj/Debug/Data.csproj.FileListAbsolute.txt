@@ -12,3 +12,17 @@ C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Data\bin\De
 C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Data\obj\Debug\Data.dll
 C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Data\obj\Debug\Data.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\Data.dll.config
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\Data.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\Data.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\Entity.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\EntityFramework.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\Entity.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\EntityFramework.xml
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\obj\Debug\Data.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Data\obj\Debug\Data.pdb

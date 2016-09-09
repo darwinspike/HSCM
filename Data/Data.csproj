@@ -56,6 +56,7 @@
     <Compile Include="Administration\CellarAreaData.cs" />
     <Compile Include="Administration\DepartmentData.cs" />
     <Compile Include="Administration\ProviderData.cs" />
+    <Compile Include="Employee\EmployeeData.cs" />
     <Compile Include="Handler\ErrorObject.cs" />
     <Compile Include="HSCMModel.Context.cs">
       <AutoGen>True</AutoGen>

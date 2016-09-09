@@ -10,3 +10,15 @@ C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Bussines\bi
 C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Bussines\obj\Debug\Bussines.csprojResolveAssemblyReference.cache
 C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Bussines\obj\Debug\Bussines.dll
 C:\Users\Darwin\documents\visual studio 2015\Projects\EileenGaldamez\Bussines\obj\Debug\Bussines.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\Bussines.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\Bussines.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\Data.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\Entity.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\EntityFramework.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\Data.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\Entity.pdb
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\EntityFramework.xml
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\obj\Debug\Bussines.csprojResolveAssemblyReference.cache
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\obj\Debug\Bussines.dll
+C:\Users\Darwin\Documents\Visual Studio 2015\Projects\HSCM\Bussines\obj\Debug\Bussines.pdb

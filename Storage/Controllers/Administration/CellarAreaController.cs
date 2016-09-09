@@ -15,7 +15,7 @@ namespace Storage.Controllers.Administration
         #region Proerties
         private static string result = "";
         #endregion
-        // GET: CellarArea
+
         #region Views
         public ActionResult cellarAreaView(bool successful = false, string ResultAction = "")
         {
