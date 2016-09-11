@@ -71,6 +71,32 @@ namespace Data
                     return new Tuple<ErrorObject, tblDepartment>(erros, Department);
                 }
             }
+
+            /// <summary>
+            /// Return Department Name To Specific ID
+            /// </summary>
+            /// <param name="id">Department ID</param>
+            /// <returns>Department Name</returns>
+            public static Tuple<ErrorObject, tblDepartment> GetDepartmentName(int id)
+            {
+                tblDepartment Department = new tblDepartment();
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        Department.name = db.tblDepartment.Find(id).name;
+                    }
+                    erros.Error = false;
+                    return new Tuple<ErrorObject, tblDepartment>(erros.IfError(false), Department);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, tblDepartment>(erros, Department);
+                }
+            }
         }
         #endregion
 

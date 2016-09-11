@@ -201,11 +201,14 @@
     <Compile Include="Controllers\Administration\CellarAreaController.cs" />
     <Compile Include="Controllers\Administration\DepartmentController.cs" />
     <Compile Include="Controllers\Administration\ProviderController.cs" />
+    <Compile Include="Controllers\Cellar\CellarController.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Product\ProductController.cs" />
     <Compile Include="Controllers\Product\ProductTypeController.cs" />
     <Compile Include="Controllers\User\TypePermissionController.cs" />
+    <Compile Include="Controllers\User\UserConfigurationController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Controllers\User\UserTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,11 +220,14 @@
     <Compile Include="Models\Administration\CellarAreaViewModels.cs" />
     <Compile Include="Models\Administration\DepartmentViewModels.cs" />
     <Compile Include="Models\Administration\ProviderViewModels.cs" />
+    <Compile Include="Models\Cellar\CellarViewModels.cs" />
     <Compile Include="Models\Employee\EmployeeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product\ProductTypeViewModels.cs" />
+    <Compile Include="Models\Product\ProductViewModels.cs" />
     <Compile Include="Models\User\TypePermissionViewModels.cs" />
+    <Compile Include="Models\User\UserConfigurationViewModels.cs" />
     <Compile Include="Models\User\UserTypeViewModels.cs" />
     <Compile Include="Models\User\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +236,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\HSCMLog2.png" />
+    <Content Include="Content\Images\HSCMLog3.png" />
+    <Content Include="Content\Images\HSCMLogo.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -321,6 +330,18 @@
     <Content Include="Views\Employee\EmployeeView.cshtml" />
     <Content Include="Views\Employee\EmployeeCreate.cshtml" />
     <Content Include="Views\Employee\EmployeeUpdate.cshtml" />
+    <Content Include="Views\UserConfiguration\UserPermissionView.cshtml" />
+    <Content Include="Views\UserConfiguration\UserPermissionCreate.cshtml" />
+    <Content Include="Views\UserConfiguration\UserPermissionUpdate.cshtml" />
+    <Content Include="Views\UserConfiguration\UserPermissionDetail.cshtml" />
+    <Content Include="Views\UserConfiguration\UserPermissionNewAssignment.cshtml" />
+    <Content Include="Views\Product\productView.cshtml" />
+    <Content Include="Views\Product\productCreate.cshtml" />
+    <Content Include="Views\Product\productEdit.cshtml" />
+    <Content Include="Views\Cellar\CellarView.cshtml" />
+    <Content Include="Views\Cellar\CellarDetail.cshtml" />
+    <Content Include="Views\Cellar\CellarCreate.cshtml" />
+    <Content Include="Views\Cellar\CellarUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

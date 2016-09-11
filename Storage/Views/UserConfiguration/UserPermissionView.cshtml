@@ -1,0 +1,70 @@
+﻿@model Storage.Models.User.UserViewModels
+
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+
+    if (Bussines.User.UserBussines.Select.GetUserButNotConfigurationList().UserList.Count != 0)
+    {
+        <p>
+            <label class="ActionPop" data-url="@Url.Action("UserPermissionCreate")">Create New</label>
+        </p>
+
+    }
+
+    if (ViewBag.successful)
+    {
+        <div class="alert alert-success" role="alert"><label class="glyphicon glyphicon-ok"></label> @ViewBag.Message</div>
+    }
+
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>User Name</th>
+            <th>State</th>
+            <th></th>
+        </tr>
+        @{int i = 1;}
+        @foreach (var item in Model.UsersList)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.user</td>
+                <td @if (@item.state == "Active") { @(" style = color:green;"); } else { @(" style = color:red;")   ; }>
+                    @item.state
+                </td>
+                <td>
+                    <label class="ActionPop" data-url="@Url.Action("UserPermissionNewAssignment", new { id = item.id })">New Permission</label>
+                    <label class="ActionPop" data-url="@Url.Action("UserPermissionDetail", new { id = item.id })">Detail</label>
+                    @*<label class="ActionPop" data-url="@Url.Action("UserPermissionUpdate", new { id = item.id })">Update Permission</label>*@
+                    @*@if (@item.state == "Active")
+                            {
+                                @Html.ActionLink("Disable", "UserPermissionDisable", new { id = item.id, state = "Disable" });
+                            }
+                    else
+                    {
+                        @Html.ActionLink("Active", "UserPermissionDisable", new { id = item.id, state = "Active" });
+                    }*@
+                </td>
+            </tr>
+    i++;
+}
+    </table>
+            if (Bussines.User.UserBussines.Select.GetUserButNotConfigurationList().UserList.Count != 0)
+            {
+                <p>
+                    <label class="ActionPop" data-url="@Url.Action("UserPermissionCreate")">Create New</label>
+                </p>
+
+                }
+
+            }

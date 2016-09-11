@@ -1,0 +1,50 @@
+﻿@model Storage.Models.Cellar.CellarViewModels
+
+
+
+
+
+@{
+    Bussines.Product.ProductBussines.GetProductRequest request = new Bussines.Product.ProductBussines.GetProductRequest()
+    {
+        ProductID = (int)Model.Cellar.idProduct
+    };
+    var datas = Bussines.Product.ProductBussines.Select.GetProduct(request).Product;
+    string code = datas.code;
+    string name = datas.name;
+}
+<h1>
+    Detail - @name (@code)
+</h1>
+<h3>@ViewBag.Message</h3>
+
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{ 
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Amount</th>
+            <th>Detail</th>
+            <th>Date In</th>
+        </tr>
+        @{int i = 1;}
+        @foreach (var item in Model.TransactionList)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.amount</td>
+                <td>@item.detail</td>
+                <td>@item.createDate</td>
+            </tr>
+            i++;
+        }
+        <tr>
+            <th>Total</th>
+            <th colspan="3">@Model.total</th>
+        </tr>
+    </table>
+}

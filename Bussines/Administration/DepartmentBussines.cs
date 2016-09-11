@@ -139,6 +139,41 @@ namespace Bussines
 
                 return response;
             }
+
+            /// <summary>
+            /// Return Department Name To Specific ID
+            /// </summary>
+            /// <param name="request">Department ID</param>
+            /// <returns>Department Name</returns>
+            public static GetDepartmentResponse GetDepartmentName(int request)
+            {
+                GetDepartmentResponse response = new GetDepartmentResponse();
+                response.Error = new Handler.ErrorObject();
+                response.Department = new Department();
+                try
+                {
+                    var GetDepartment = DepartmentData.Select.GetDepartmentName(request);
+                    if (!GetDepartment.Item1.Error)
+                    {
+                        response.Department = new Department()
+                        {
+                            name = GetDepartment.Item2.name
+                        };
+
+                    }
+                    else
+                    {
+                        response.Error.InfoError(GetDepartment.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+
+                return response;
+            }
+
         }
         #endregion
 

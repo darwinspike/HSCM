@@ -1,0 +1,50 @@
+﻿@model Storage.Models.User.UserConfigurationViewModels
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Permission Type</th>
+            <th>Cellar Area</th>
+            <th>Assignment Type</th>
+            <th></th>
+            <th>State</th>
+            <th></th>
+        </tr>
+        @{int i = 1;}
+        @foreach (var item in Model.UserConfigurationList)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@Bussines.User.TypePermissionBussines.Select.GetTypePermissionName((int)item.idTypePermission).TypePermission.name</td>
+                <td>@Bussines.CellarAreaBussines.Select.GetCellarAreaName((int)item.idCellarArea).CellarArea.name</td>
+                <td>@Bussines.AssignmentTypeBussines.Select.GetAssignmentTypeName((int)item.idAssignmentType).AssignmentType.name</td>
+                <td>
+                    @switch (item.idAssignmentType)
+                    {
+                        case 1:
+                            @Bussines.DepartmentBussines.Select.GetDepartmentName((int)item.idAnchorAssignmentType).Department.name;
+                            break;
+                        case 2:
+                            @Bussines.CategoryBussines.Select.GetCategoryName((int)item.idAnchorAssignmentType).Category.name;
+                            break;
+                    }
+                </td>
+
+                <td @if (@item.state == "Active") { @(" style = color:green;") ; } else { @(" style = color:red;")    ; }>
+                    @item.state
+                </td>
+            </tr>
+    i++;
+}
+    </table>
+        }
+

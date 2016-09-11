@@ -138,6 +138,39 @@ namespace Bussines.User
 
                 return response;
             }
+
+            /// <summary>
+            /// Get Type Permission Name By Specific ID
+            /// </summary>
+            /// <param name="request">TypePermissionID</param>
+            /// <returns>Type Permission Name By Specific ID</returns>
+            public static GetTypePermissionResponse GetTypePermissionName(int request)
+            {
+                GetTypePermissionResponse response = new GetTypePermissionResponse();
+                response.Error = new Handler.ErrorObject();
+                response.TypePermission = new TypePermission();
+                try
+                {
+                    var TypePermission = TypePermissionData.Select.GetTypePermissionName(request);
+                    if (!TypePermission.Item1.Error)
+                    {
+                        response.TypePermission = new TypePermission()
+                        {
+                            name = TypePermission.Item2.name
+                        };
+                    }
+                    else
+                    {
+                        response.Error.InfoError(TypePermission.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+
+                return response;
+            }
         }
         #endregion
 

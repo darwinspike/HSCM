@@ -1,0 +1,138 @@
+﻿@model Storage.Models.Product.ProductViewModels
+
+
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+@using (Html.BeginForm("productEdit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Products.code, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Products.code, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Products.code)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Products.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Products.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Products.name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Products.unit, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Products.unit, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Products.unit)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Products.unit, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Products.idProductType, new SelectList(Model.ProductTypeList, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Products.idProductType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Products.detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Products.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Products.detail)
+                </div>
+            </div>
+
+    @if (!String.IsNullOrEmpty(Model.FileManagersList.ToString()))
+    {
+    <div class="form-group">
+        <div class="col-md-10">
+            <h3>Files</h3>
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Name File</th>
+                        <th>Type</th>
+                        <th>Detail</th>
+                        <th>Status</th>
+                        <th></th>
+                </tr>
+                @{int i = 1;}
+                @foreach (var item in Model.FileManagersList)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.fileName</td>
+                        <td>@item.fileType</td>
+                        <td>@item.fileDetail</td>
+                        <td>@item.state</td>
+                        <td>
+                            Edit | 
+                            @Html.ActionLink("Download", "DownloadFiel", new { id = item.id })
+                        </td>
+                    </tr>
+                    @Html.HiddenFor(m => m.FileManagers.id, item.id)
+                    @Html.HiddenFor(m => m.FileManagers.createDate, item.createDate)
+                    @Html.HiddenFor(m => m.FileManagers.upDateDate, item.upDateDate)
+                    @Html.HiddenFor(m => m.FileManagers.deleteDate, item.deleteDate)
+                    @Html.HiddenFor(m => m.FileManagers.state, item.state)
+                    i++;
+                }
+        </table>
+        </div>
+    </div>
+    }
+    <div class="form-group">
+        <div class="col-md-10">
+            <h3>Added Files</h3>
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Detail</th>
+                    <th>File</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>@Html.EditorFor(model => model.FileManagers.fileDetail, new { htmlAttributes = new { @class = "form-control" } })</td>
+                    <td>@Html.TextBox("file", "", new { type = "file", @class = "form-control" })</td>
+                    <th>+</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Products.id)
+                @Html.HiddenFor(model => model.Products.createDate)
+                @Html.HiddenFor(model => model.Products.upDateDate)
+                @Html.HiddenFor(model => model.Products.deleteDate)
+                @Html.HiddenFor(model => model.Products.state)
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

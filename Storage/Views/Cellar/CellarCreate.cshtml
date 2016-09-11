@@ -1,0 +1,83 @@
+﻿@model Storage.Models.Cellar.CellarViewModels
+
+<h1>@ViewBag.Title</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <h4>Product Assignment Information</h4>
+                <hr />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Product, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Cellar.idProduct, new SelectList(Model.ProductList, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Cellar.idProduct, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CellarArea, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Cellar.idcellarArea, new SelectList(Model.CellarAreaList, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Cellar.idcellarArea, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cellar.detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cellar.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cellar.detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <hr />
+                <h4>Cellar Infomation</h4>
+                <hr />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Transaction.amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Transaction.amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction.detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Transaction.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Transaction.detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Provider, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Transaction.idProvide, new SelectList(Model.ProviderList, "id", "companyName", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Transaction.idProvide, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction.createDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Transaction.createDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Transaction.createDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Cellar.id)
+                @Html.HiddenFor(model => model.Cellar.upDateDate)
+                @Html.HiddenFor(model => model.Cellar.createDate)
+                @Html.HiddenFor(model => model.Cellar.state)
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

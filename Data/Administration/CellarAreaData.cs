@@ -72,6 +72,34 @@ namespace Data
                     return new Tuple<ErrorObject, tblCellarArea>(erros, CellarArea);
                 }
             }
+
+            /// <summary>
+            /// Return Cellar Area Name
+            /// </summary>
+            /// <param name="id">CellarAreaID</param>
+            /// <returns>Cellar Area Name</returns>
+            public static Tuple<ErrorObject, tblCellarArea> GetCellarAreaName(int id)
+            {
+                tblCellarArea CellarArea = new tblCellarArea();
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        CellarArea.name = db.tblCellarArea.Find(id).name;
+                    }
+                    erros.Error = false;
+                    return new Tuple<ErrorObject, tblCellarArea>(erros.IfError(false), CellarArea);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, tblCellarArea>(erros, CellarArea);
+                }
+            }
+
+            
         }
         #endregion
 

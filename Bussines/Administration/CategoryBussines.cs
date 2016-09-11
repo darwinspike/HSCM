@@ -206,8 +206,6 @@ namespace Bussines
                 return response;
             }
 
-
-
             public static List<Category> CategoryListOrderByFatherAndChild(List<Category> CList) {
 
                 List<Category> CategoryList = new List<Category>();
@@ -244,6 +242,40 @@ namespace Bussines
                 }
                 return CategoryList;
             }
+
+            /// <summary>
+            /// Return Category Name To Specific ID
+            /// </summary>
+            /// <param name="request">CategoryID</param>
+            /// <returns>Category Name</returns>
+            public static GetCategoryResponse GetCategoryName(int request)
+            {
+                GetCategoryResponse response = new GetCategoryResponse();
+                response.Error = new Handler.ErrorObject();
+                response.Category = new Category();
+                try
+                {
+                    var GetCategory = CategoryData.Select.GetCategoryName(request);
+                    if (!GetCategory.Item1.Error)
+                    {
+                        response.Category = new Category()
+                        {
+                            name = GetCategory.Item2.name
+                        };
+                    }
+                    else
+                    {
+                        response.Error.InfoError(GetCategory.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+
+                return response;
+            }
+
 
         }
         #endregion

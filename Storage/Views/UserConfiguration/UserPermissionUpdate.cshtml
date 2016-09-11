@@ -1,0 +1,67 @@
+﻿@model Storage.Models.User.UserConfigurationViewModels
+
+@Scripts.Render("~/bundles/jqueryval")
+<h1>@ViewBag.Title</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.Label("productType", "Type Permission", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.UserConfiguration.idTypePermission, new SelectList(Model.TypePermission, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserConfiguration.idTypePermission, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("productType", "Cellar Area", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.UserConfiguration.idCellarArea, new SelectList(Model.CellarArea, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserConfiguration.idTypePermission, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("productType", "Assignment Type", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.UserConfiguration.idTypePermission, new SelectList(Model.TypePermission, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserConfiguration.idTypePermission, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group Category" style="display: none;">
+                @Html.Label("productType", "Category", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.UserConfiguration.idAnchorAssignmentType, new SelectList(Model.Category, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserConfiguration.idAnchorAssignmentType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group Department" style="display: none;">
+                @Html.Label("productType", "Department", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.UserConfiguration.idAnchorAssignmentType, new SelectList(Model.Department, "id", "name", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserConfiguration.idAnchorAssignmentType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.UserConfiguration.id)
+                @Html.HiddenFor(model => model.UserConfiguration.idUser)
+                @Html.HiddenFor(model => model.UserConfiguration.upDateDate)
+                @Html.HiddenFor(model => model.UserConfiguration.createDate)
+                @Html.HiddenFor(model => model.UserConfiguration.state)
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

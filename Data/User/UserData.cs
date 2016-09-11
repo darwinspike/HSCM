@@ -47,6 +47,63 @@ namespace Data.User
 
             }
 
+
+            
+            public static Tuple<ErrorObject, List<tblUser>> GetUserButNotConfigurationList()
+            {
+                List<tblUser> Users = new List<tblUser>();
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        Users = ( from U in db.tblUser
+                                  join UC in db.tblUserConfiguration 
+                                  on U.id equals UC.idUser into gj
+                                  from newUser in gj.DefaultIfEmpty()
+                                  where newUser == null
+                                  select U 
+                                  ).ToList();
+                    };
+
+                    return new Tuple<ErrorObject, List<tblUser>>(erros.IfError(false), Users);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, List<tblUser>>(erros, Users);
+                }
+
+            }
+
+            public static Tuple<ErrorObject, List<tblUser>> GetUserButConfigurationList()
+            {
+                List<tblUser> Users = new List<tblUser>();
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        Users = (from U in db.tblUser
+                                 join UC in db.tblUserConfiguration
+                                 on U.id equals UC.idUser 
+                                 select U
+                                  ).ToList();
+                    };
+
+                    return new Tuple<ErrorObject, List<tblUser>>(erros.IfError(false), Users);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, List<tblUser>>(erros, Users);
+                }
+
+            }
+
+
             /// <summary>
             /// Return Users By Specific ID
             /// </summary>

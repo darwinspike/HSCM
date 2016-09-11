@@ -9,7 +9,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <a href="~/">
+                <img src="~/Content/Images/HSCMLog2.png" class="logo" />
+            </a>
+
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -41,7 +44,7 @@
                         <li role="separator" class="divider"></li>
                         <li>@Html.ActionLink("Users", "UserView", "User") </li>
                         <li>@Html.ActionLink("User Type", "UserTypeView", "UserType") </li>
-                        <li>@Html.ActionLink("Permission User", "", "") </li>
+                        <li>@Html.ActionLink("Permission User", "UserPermissionView", "UserConfiguration") </li>
                         <li>@Html.ActionLink("Employees", "EmployeeView", "Employee") </li>
 
                         <li role="separator" class="divider"></li>
@@ -58,14 +61,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li role="separator" class="divider"></li>
-                        <li>@Html.ActionLink("Products", "productView", "product") </li>
+                        <li>@Html.ActionLink("Products", "productView", "Product") </li>
                         <li>@Html.ActionLink("Products Type", "productTypeView", "ProductType") </li>
-                        <li>@Html.ActionLink("Order Product", "", "") </li>
-                        <li>@Html.ActionLink("Product Registration", "CellarMonitoringView", "cellar") </li>
+                        @*<li>@Html.ActionLink("Order Product", "", "") </li>*@
+                        <li>@Html.ActionLink("Inflow Cellar Product", "CellarView", "cellar") </li>
                     </ul>
                 </li>
             </ul>
-            @Html.Partial("_LoginPartial")
+            @*@Html.Partial("_LoginPartial")*@
         </div>
     </div>
 </div>
+

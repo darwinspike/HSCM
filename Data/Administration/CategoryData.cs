@@ -121,6 +121,32 @@ namespace Data
                 }
 
             }
+
+            /// <summary>
+            /// Return Category Name To Specific ID
+            /// </summary>
+            /// <param name="CategoryID">CategoryID</param>
+            /// <returns>Category Name</returns>
+            public static Tuple<ErrorObject, tblCategory> GetCategoryName(int CategoryID)
+            {
+                tblCategory c = new tblCategory();
+                erros = new ErrorObject();
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        c.name = db.tblCategory.Find(CategoryID).name;
+                        return new Tuple<ErrorObject, tblCategory>(erros.IfError(false), c);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, tblCategory>(erros, c);
+                }
+
+            }
+
         }
         #endregion
 

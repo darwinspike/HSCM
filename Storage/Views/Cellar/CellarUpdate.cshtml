@@ -1,0 +1,110 @@
+﻿@model Storage.Models.Cellar.CellarViewModels
+@{
+    Bussines.Product.ProductBussines.GetProductRequest request = new Bussines.Product.ProductBussines.GetProductRequest()
+    {
+        ProductID = (int)Model.Cellar.idProduct
+    };
+    var datas = Bussines.Product.ProductBussines.Select.GetProduct(request).Product;
+    string code = datas.code;
+    string name = datas.name;
+}
+<h1>
+    New Inflow Register - @name (@code) 
+</h1>
+<h3>@ViewBag.Message</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Transaction.amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Transaction.amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction.detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Transaction.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Transaction.detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Provider, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Transaction.idProvide, new SelectList(Model.ProviderList, "id", "companyName", 0), "Please Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Transaction.idProvide, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Transaction.createDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Transaction.createDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Transaction.createDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Cellar.id)
+                @Html.HiddenFor(model => model.Cellar.idProduct)
+                @Html.HiddenFor(model => model.Cellar.idcellarArea)
+                @Html.HiddenFor(model => model.Cellar.detail)
+                @Html.HiddenFor(model => model.Cellar.createDate)
+                @Html.HiddenFor(model => model.Cellar.state)
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Amount</th>
+            <th>Detail</th>
+            <th>Date In</th>
+        </tr>
+        @{int j = 1;}
+        @foreach (var item in Model.TransactionList)
+        {
+            <tr>
+                <td>@j</td>
+                <td>@item.amount</td>
+                <td>@item.detail</td>
+                <td>@item.createDate</td>
+            </tr>
+            j++;
+        }
+        <tr>
+            <th>Total</th>
+            <th colspan="3">@Model.total</th>
+        </tr>
+    </table>
+}
+
+@section Scripts {
+    <script type="text/javascript">
+
+            $(".NewAmount").blur(function () {
+                newVal = $(".NewAmount").val();
+                currentValue = $(".currentValue").val();
+                va = parseInt(newVal) + parseInt(currentValue);
+
+                console.log(va);
+                $("#amount").val(va);
+
+            });
+    </script>
+}

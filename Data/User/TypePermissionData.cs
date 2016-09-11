@@ -74,6 +74,33 @@ namespace Data.User
                     return new Tuple<ErrorObject, tblTypePermission>(erros, TypePermission);
                 }
             }
+
+            /// <summary>
+            /// Get Type Permission Name By Specific ID
+            /// </summary>
+            /// <param name="id">TypePermissionID</param>
+            /// <returns>Type Permission Name By Specific ID</returns>
+            public static Tuple<ErrorObject, tblTypePermission> GetTypePermissionName(int id)
+            {
+                tblTypePermission TypePermission = new tblTypePermission();
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        TypePermission.name = db.tblTypePermission.Find(id).name;
+                    }
+                    erros.Error = false;
+                    return new Tuple<ErrorObject, tblTypePermission>(erros.IfError(false), TypePermission);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, tblTypePermission>(erros, TypePermission);
+                }
+            }
+            
         }
         #endregion
 

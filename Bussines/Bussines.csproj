@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,12 +47,21 @@
     <Compile Include="Administration\CellarAreaBussines.cs" />
     <Compile Include="Administration\DepartmentBussines.cs" />
     <Compile Include="Administration\ProviderBussines.cs" />
+    <Compile Include="Assignment\AssignmentBussines.cs" />
+    <Compile Include="Cellar\CellarBussines.cs" />
     <Compile Include="Employee\EmployeeBussines.cs" />
+    <Compile Include="FileManager\FileManagerBussines.cs" />
     <Compile Include="Handler\ErrorObject.cs" />
+    <Compile Include="Product\ProductBussines.cs" />
+    <Compile Include="Product\ProductFileManagerBussines.cs" />
     <Compile Include="Product\ProductTypeBussines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transaction\TransactionBussines.cs" />
+    <Compile Include="Transaction\TransactionConfigurateBussines.cs" />
+    <Compile Include="Transaction\TransactionTypeBussines.cs" />
     <Compile Include="User\TypePermissionBussines.cs" />
     <Compile Include="User\UserBussines.cs" />
+    <Compile Include="User\UserConfigurationBussines.cs" />
     <Compile Include="User\UserTypeBussines.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +74,7 @@
       <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

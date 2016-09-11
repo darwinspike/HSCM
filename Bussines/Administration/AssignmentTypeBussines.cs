@@ -139,6 +139,40 @@ namespace Bussines
 
                 return response;
             }
+
+            /// <summary>
+            /// Return Assignment Type Name
+            /// </summary>
+            /// <param name="request">Assignment Type ID</param>
+            /// <returns>Assignment Type Name</returns>
+            public static GetAssignmentTypeResponse GetAssignmentTypeName(int request)
+            {
+                GetAssignmentTypeResponse response = new GetAssignmentTypeResponse();
+                response.Error = new Handler.ErrorObject();
+                response.AssignmentType = new AssignmentType();
+                try
+                {
+                    var GetAssignmentType = AssignmentTypeData.Select.GetAssignmentTypeName(request);
+                    if (!GetAssignmentType.Item1.Error)
+                    {
+                        response.AssignmentType = new AssignmentType()
+                        {
+                            name = GetAssignmentType.Item2.name
+                        };
+
+                    }
+                    else
+                    {
+                        response.Error.InfoError(GetAssignmentType.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+
+                return response;
+            }
         }
         #endregion
 

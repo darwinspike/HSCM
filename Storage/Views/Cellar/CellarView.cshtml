@@ -1,0 +1,62 @@
+﻿@model Storage.Models.Cellar.CellarViewModels
+<h1>@ViewBag.Title.</h1>
+<h3>@ViewBag.Message</h3>
+@if (Model.Error.Error)
+{
+    @Html.Partial("_ModalError", Model.Error)
+}
+else
+{
+    <p><label class="ActionPop" data-url="@Url.Action("CellarCreate")">Create New</label></p>
+    if (ViewBag.successful)
+    {
+        <div class="alert alert-success" role="alert"><label class="glyphicon glyphicon-ok"></label> @ViewBag.Message</div>
+    }
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th>Product</th>
+            <th>Current Stock</th>
+            <th>Area</th>
+            <th>Detail</th>
+            <th>State</th>
+            <th></th>
+        </tr>
+        @{
+            int i = 1;
+            Bussines.Product.ProductBussines.GetProductRequest request = new Bussines.Product.ProductBussines.GetProductRequest();
+            Bussines.CellarAreaBussines.GetCellarAreaRequest requestCellar = new Bussines.CellarAreaBussines.GetCellarAreaRequest();
+            string code = "";
+            string name = "";
+            string nameCellarArea = "";
+        }
+        @foreach (var item in Model.CellarList)
+        {
+            {
+                request.ProductID = (int)item.idProduct;
+                requestCellar.CellarAreaID = (int)item.idcellarArea;
+                var datas = Bussines.Product.ProductBussines.Select.GetProduct(request).Product;
+                code = datas.code;
+                name = datas.name;
+                nameCellarArea = Bussines.CellarAreaBussines.Select.GetCellarArea(requestCellar).CellarArea.name;
+            }
+        <tr>
+            <td>@i</td>
+            <td>@code</td>
+            <td>@name</td>
+            <td>@item.amount</td>
+            <td>@nameCellarArea</td>
+            <td>@item.state</td>
+            <td @if (@item.state == "Active") {  @(" style = color:green;")          ; } else { @(" style = color:red;")          ; }>@item.state</td>
+            <td>
+                <label class="ActionPop" data-url="@Url.Action("CellarUpdate", new { AnchorTransactionID = item.id, TransactionTypeID = 1 })">Inflow</label>
+                <label class="ActionPop" data-url="@Url.Action("CellarDetail", new { AnchorTransactionID = item.id, TransactionTypeID = 1 })">Detail</label>
+                <label class="ActionPop" data-url="@Url.Action("CellarMonitoringUpdateid", new { id = item.id })">Edit</label>
+            </td>
+        </tr>
+        i++;
+        }
+    </table>
+    <p><label class="ActionPop" data-url="@Url.Action("CellarCreate")">Create New</label></p>
+}

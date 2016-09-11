@@ -73,6 +73,33 @@ namespace Data
                     return new Tuple<ErrorObject, tblAssignmentType>(erros, AssignmentType);
                 }
             }
+
+            /// <summary>
+            /// Return Assignment Type Name
+            /// </summary>
+            /// <param name="id">Assignment Type ID</param>
+            /// <returns>Assignment Type Name</returns>
+            public static Tuple<ErrorObject, tblAssignmentType> GetAssignmentTypeName(int id)
+            {
+                tblAssignmentType AssignmentType = new tblAssignmentType();
+                erros = new ErrorObject();
+
+                try
+                {
+                    using (HSCMEntities db = new HSCMEntities())
+                    {
+                        AssignmentType.name = db.tblAssignmentType.Find(id).name;
+                    }
+                    erros.Error = false;
+                    return new Tuple<ErrorObject, tblAssignmentType>(erros.IfError(false), AssignmentType);
+                }
+                catch (Exception ex)
+                {
+                    erros.InfoError(ex);
+                    return new Tuple<ErrorObject, tblAssignmentType>(erros, AssignmentType);
+                }
+            }
+            
         }
         #endregion
 

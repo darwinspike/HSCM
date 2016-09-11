@@ -138,6 +138,40 @@ namespace Bussines
 
                 return response;
             }
+
+            /// <summary>
+            /// Return Cellar Area Name
+            /// </summary>
+            /// <param name="request">CellarAreaID</param>
+            /// <returns>Cellar Area Name</returns>
+            public static GetCellarAreaResponse GetCellarAreaName(int request)
+            {
+                GetCellarAreaResponse response = new GetCellarAreaResponse();
+                response.Error = new Handler.ErrorObject();
+                response.CellarArea = new CellarArea();
+                try
+                {
+                    var GetCellarArea = CellarAreaData.Select.GetCellarAreaName(request);
+                    if (!GetCellarArea.Item1.Error)
+                    {
+                        response.CellarArea = new CellarArea()
+                        {
+                            name = GetCellarArea.Item2.name
+                        };
+
+                    }
+                    else
+                    {
+                        response.Error.InfoError(GetCellarArea.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+
+                return response;
+            }            
         }
         #endregion
 

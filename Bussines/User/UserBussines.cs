@@ -174,6 +174,90 @@ namespace Bussines.User
                 }
                 return response;
             }
+
+
+            /// <summary>
+            /// Return User List
+            /// </summary>
+            /// <returns>User List</returns>
+            public static GetUserResponse GetUserButNotConfigurationList()
+            {
+                GetUserResponse response = new GetUserResponse();
+                response.UserList = new List<Users>();
+                response.Error = new Handler.ErrorObject();
+
+                try
+                {
+                    var User = UserData.Select.GetUserButNotConfigurationList();
+                    if (!User.Item1.Error)
+                    {
+                        foreach (var item in User.Item2)
+                        {
+                            response.UserList.Add(new Users()
+                            {
+                                id = item.id,
+                                user = item.user,
+                                password = null,
+                                createDate = item.createDate,
+                                upDateDate = item.upDateDate,
+                                deleteDate = item.deleteDate,
+                                state = item.state
+                            });
+                        }
+                    }
+                    else
+                    {
+                        response.Error.InfoError(User.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+                return response;
+            }
+
+
+
+            public static GetUserResponse GetUserButConfigurationList()
+            {
+                GetUserResponse response = new GetUserResponse();
+                response.UserList = new List<Users>();
+                response.Error = new Handler.ErrorObject();
+
+                try
+                {
+                    var User = UserData.Select.GetUserButConfigurationList();
+                    if (!User.Item1.Error)
+                    {
+                        int id = 0;
+                        for (int i = 0; User.Item2.Count > i; i++) {
+                            if (id != User.Item2[i].id)
+                            {
+                                response.UserList.Add(new Users()
+                                {
+                                    id = User.Item2[i].id,
+                                    user = User.Item2[i].user,
+                                    state = User.Item2[i].state
+                                });
+                            }
+                            id = User.Item2[i].id;
+                        }
+                    }
+                    else
+                    {
+                        response.Error.InfoError(User.Item1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Error.InfoError(ex);
+                }
+                return response;
+            }
+
+
+
         }
         #endregion
 

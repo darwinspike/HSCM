@@ -7,6 +7,12 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 30px;
+}
+
+h1 {
+    color: #224096;
+    font-size: 30px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -30,4 +36,23 @@ textarea {
     cursor: pointer;
     color: blue;
     border-bottom: 2px solid;
+}
+
+.navbar-default{
+    background-image: url("../../Content/Images/HSCMLog3.png");
+    background-repeat:repeat-x;
+    background-size: 167px !important;
+}
+
+.logo {
+    width: 165px;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #224096;
+font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
 }
